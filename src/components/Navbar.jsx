@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -28,6 +28,10 @@ export const Navbar = () => {
   const handleLogout = () => {
     dispatch(logoutUser());
   };
+
+  useEffect(() => {
+    setIsUserMenuOpen(false);
+  }, [location]);
 
   return (
     <nav className="bg-surface py-0">
