@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faBars, faTimes, faScroll } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faBars, faTimes, faScroll, faHome, faShield } from '@fortawesome/free-solid-svg-icons';
 import { logoutUser } from '../store/accountSlice';
 
 export const Navbar = () => {
@@ -44,12 +44,20 @@ export const Navbar = () => {
             <div className="hidden sm:block sm:ml-6 h-full">
               <div className="flex h-full">
                 <Link to="/" className={getLinkClass('/')}>
-                  <FontAwesomeIcon icon={faUser} />
+                  <FontAwesomeIcon icon={faHome} />
                   Inicio
                 </Link>
                 <Link to="/adventure" className={getLinkClass('/adventure')}>
                   <FontAwesomeIcon icon={faScroll} />
                   Aventuras
+                </Link>
+                <Link to="/clan" className={getLinkClass('/adventure')}>
+                  <FontAwesomeIcon icon={faShield} />
+                  Clan
+                </Link>
+                <Link to="/shop" className={getLinkClass('/adventure')}>
+                  <FontAwesomeIcon icon={faShield} />
+                  Tienda
                 </Link>
               </div>
             </div>
@@ -80,8 +88,22 @@ export const Navbar = () => {
 
       <div className={`${isMobileMenuOpen ? 'block' : 'hidden'} sm:hidden`}>
         <div className="px-2 pt-2 pb-3 space-y-1">
-          <Link to="/" className={getLinkClass('/')}>Inicio</Link>
-          <Link to="/adventure" className={getLinkClass('/adventure')}>Aventuras</Link>
+          <Link to="/" className={getLinkClass('/')}>
+            <FontAwesomeIcon icon={faHome} />
+            Inicio
+          </Link>
+          <Link to="/adventure" className={getLinkClass('/adventure')}>
+            <FontAwesomeIcon icon={faScroll} />
+            Aventuras
+          </Link>
+          <Link to="/clan" className={getLinkClass('/adventure')}>
+            <FontAwesomeIcon icon={faShield} />
+            Clan
+          </Link>
+          <Link to="/shop" className={getLinkClass('/adventure')}>
+            <FontAwesomeIcon icon={faShield} />
+            Tienda
+          </Link>
         </div>
       </div>
     </nav>
