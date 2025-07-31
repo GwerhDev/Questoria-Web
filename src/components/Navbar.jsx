@@ -49,7 +49,7 @@ export const Navbar = () => {
   return (
     <nav className="bg-surface py-0">
       <div className="max-w-content mx-auto py-0 px-2 sm:px-6 lg:px-8">
-        <div className="relative flex items-center justify-between h-16">
+        <div className="relative flex items-center justify-between h-12">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -85,7 +85,7 @@ export const Navbar = () => {
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <Link to="/play" className="mr-4 px-4 py-2 rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-300">
+            <Link to="/play" className="mr-4 px-4 py-2 rounded-md text-white bg-yellow-600 hover:bg-yellow-700 transition-colors duration-300">
               Jugar
             </Link>
             {accountData && accountData.logged ? (

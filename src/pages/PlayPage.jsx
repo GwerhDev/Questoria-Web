@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGlobe, faDesktop, faMobileAlt, faDownload } from '@fortawesome/free-solid-svg-icons';
 import { faAndroid, faApple } from '@fortawesome/free-brands-svg-icons';
+import { faGlobe, faDesktop, faMobileAlt, faDownload } from '@fortawesome/free-solid-svg-icons';
 
 const PlayPage = () => {
+  const accountData = useSelector((state) => state.account.data);
   const [deviceType, setDeviceType] = useState('');
   const [os, setOs] = useState('');
 
   useEffect(() => {
     const userAgent = navigator.userAgent;
-    
+
     // Detect device type
     if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(userAgent)) {
       setDeviceType('Tablet');
@@ -32,14 +34,13 @@ const PlayPage = () => {
   return (
     <div className="flex flex-col items-center min-h-screen text-text-primary p-4">
       <h1 className="text-4xl font-bold mb-8">Opciones de Juego</h1>
-      
+
       <div className="bg-surface p-6 rounded-lg shadow-lg w-full max-w-md mb-6">
         <h2 className="text-2xl font-semibold mb-4 flex items-center"><FontAwesomeIcon icon={faGlobe} className="mr-3" />Jugar en Navegador</h2>
         <p className="mb-4 text-text-secondary">Juega directamente desde tu navegador web.</p>
-        <a 
-          href="https://app.questoria.cl" 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href={accountData?.logged ? "https://app.questoria.cl" : "/login?redirect_uri=" + encodeURIComponent("https://app.questoria.cl")}
+          rel="noopener noreferrer"
           className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition-colors duration-300"
         >
           Ir a Questoria Web
