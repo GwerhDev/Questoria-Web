@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faBars, faTimes, faScroll } from '@fortawesome/free-solid-svg-icons';
 import { logoutUser } from '../store/accountSlice';
 
 export const Navbar = () => {
@@ -13,11 +13,11 @@ export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const getLinkClass = (path) => {
-    const baseClasses = 'px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white';
+    const baseClasses = 'px-3 h-full flex gap-2 items-center font-medium text-gray-300 hover:text-white';
     if (path === '/') {
-      return location.pathname === path ? `${baseClasses} bg-gray-900 text-white` : baseClasses;
+      return location.pathname === path ? `${baseClasses} bg-yellow-600 hover:bg-yellow-700  text-white` : baseClasses;
     }
-    return location.pathname.startsWith(path) ? `${baseClasses} bg-gray-900 text-white` : baseClasses;
+    return location.pathname.startsWith(path) ? `${baseClasses} bg-yellow-600 hover:bg-yellow-700 text-white` : baseClasses;
   };
 
   const handleLogout = () => {
@@ -25,8 +25,8 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="bg-surface">
-      <div className="max-w-content mx-auto px-2 sm:px-6 lg:px-8">
+    <nav className="bg-surface py-0">
+      <div className="max-w-content mx-auto py-0 px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             <button
@@ -37,14 +37,20 @@ export const Navbar = () => {
               <FontAwesomeIcon icon={isMobileMenuOpen ? faTimes : faBars} />
             </button>
           </div>
-          <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+          <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start h-full">
             <div className="flex-shrink-0 flex items-center">
               <h1 className="text-2xl font-semibold text-text-primary">Questoria</h1>
             </div>
-            <div className="hidden sm:block sm:ml-6">
-              <div className="flex space-x-4">
-                <Link to="/" className={getLinkClass('/')}>Inicio</Link>
-                <Link to="/adventure" className={getLinkClass('/adventure')}>Aventuras</Link>
+            <div className="hidden sm:block sm:ml-6 h-full">
+              <div className="flex h-full">
+                <Link to="/" className={getLinkClass('/')}>
+                  <FontAwesomeIcon icon={faUser} />
+                  Inicio
+                </Link>
+                <Link to="/adventure" className={getLinkClass('/adventure')}>
+                  <FontAwesomeIcon icon={faScroll} />
+                  Aventuras
+                </Link>
               </div>
             </div>
           </div>
