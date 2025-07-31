@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,11 +7,15 @@ import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 const LoginPage = () => {
   const API_BASE = import.meta.env.VITE_API_BASE;
   const navigate = useNavigate();
+  const location = useLocation();
   const logged = useSelector((state) => state.account.logged);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const googleAuth = API_BASE + "/login-google"
+  const queryParams = new URLSearchParams(location.search);
+  const redirectUri = queryParams.get('redirect_uri');
+
+  const googleAuth = API_BASE + "/login-google" + (redirectUri ? `?redirect_uri=${encodeURIComponent(redirectUri)}` : '');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,13 +25,17 @@ const LoginPage = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password, redirect_uri: redirectUri }),
       });
 
       if (response.ok) {
         // Handle successful login, maybe redirect or update state
         console.log('Login successful');
-        navigate('/');
+        if (redirectUri) {
+          window.location.href = redirectUri;
+        } else {
+          navigate('/');
+        }
       } else {
         // Handle login failure
         console.error('Login failed');
@@ -49,6 +57,11 @@ const LoginPage = () => {
         <div className="text-center">
           <h1 className="text-4xl font-bold text-text-primary">Bienvenido a Questoria</h1>
           <p className="mt-2 text-text-secondary">Ingresa tus datos para comenzar tu aventura</p>
+          {redirectUri && (
+            <p className="mt-4 text-text-secondary text-sm">
+              Serás redirigido a: <span className="font-semibold text-yellow-400 break-all">{decodeURIComponent(redirectUri)}</span>
+            </p>
+          )}
         </div>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="relative">
@@ -84,6 +97,9 @@ const LoginPage = () => {
           <FontAwesomeIcon icon={faGoogle} />
           <span>Iniciar sesión con Google</span>
         </a>
+        <button onClick={() => navigate('/')} className="w-full p-4 font-bold text-white rounded-lg bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all duration-300 shadow-lg mt-4">
+          Volver al inicio
+        </button>
       </div>
     </div>
   );
