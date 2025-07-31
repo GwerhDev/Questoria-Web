@@ -11,6 +11,11 @@ export const Navbar = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+
+  const handleUserMenuToggle = () => {
+    setIsUserMenuOpen(!isUserMenuOpen);
+  };
 
   const getLinkClass = (path) => {
     const baseClasses = 'px-5 h-full flex gap-2 items-center font-medium text-gray-300 hover:text-white';
@@ -64,18 +69,22 @@ export const Navbar = () => {
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             {accountData && accountData.logged ? (
-              <div className="relative">
-                <button className="flex items-center space-x-2 p-2 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors duration-300 focus:outline-none">
+              <div className="relative" onBlur={handleUserMenuToggle} tabIndex={0}>
+                <button 
+                  onClick={handleUserMenuToggle} 
+                  className="flex items-center space-x-2 p-2 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors duration-300 focus:outline-none">
                   {accountData.userData.profilePic ? (
                     <img src={accountData.userData.profilePic} alt="Profile" className="w-8 h-8 rounded-full" />
                   ) : (
                     <div className="w-8 h-8 rounded-full bg-gray-500 flex items-center justify-center text-white text-sm">{accountData.userData.username.charAt(0).toUpperCase()}</div>
                   )}
                 </button>
-                <div className="absolute right-0 mt-2 w-48 bg-surface rounded-md shadow-lg py-1 z-20">
-                  <Link to="/u/account" className="block px-4 py-2 text-sm text-text-primary hover:bg-gray-700">Ver perfil</Link>
-                  <button onClick={handleLogout} className="block w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-gray-700">Cerrar sesión</button>
-                </div>
+                {isUserMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-48 bg-surface rounded-md shadow-lg py-1 z-20">
+                    <Link to="/u/account" className="block px-4 py-2 text-sm text-text-primary hover:bg-gray-700">Ver perfil</Link>
+                    <button onClick={handleLogout} className="block w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-gray-700">Cerrar sesión</button>
+                  </div>
+                )}
               </div>
             ) : (
               <Link to="/login" className="p-2 rounded-full hover:bg-gray-700">
