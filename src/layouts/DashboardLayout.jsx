@@ -1,10 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
-import { Sidebar } from '../components/Sidebar';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAccountData, logoutUser } from '../store/accountSlice';
-import { Link, useNavigate } from 'react-router-dom';
-import { ExperienceBar } from '../components/ExperienceBar';
 import { Loader } from '../components/Loader';
+import { Sidebar } from '../components/Sidebar';
 
 const DashboardLayout = ({ children }) => {
   const accountData = useSelector((state) => state.account.data);
