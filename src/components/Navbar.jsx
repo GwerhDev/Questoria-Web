@@ -13,7 +13,7 @@ export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const getLinkClass = (path) => {
-    const baseClasses = 'px-3 h-full flex gap-2 items-center font-medium text-gray-300 hover:text-white';
+    const baseClasses = 'px-5 h-full flex gap-2 items-center font-medium text-gray-300 hover:text-white';
     if (path === '/') {
       return location.pathname === path ? `${baseClasses} bg-yellow-600 hover:bg-yellow-700  text-white` : baseClasses;
     }
@@ -51,11 +51,11 @@ export const Navbar = () => {
                   <FontAwesomeIcon icon={faScroll} />
                   Aventuras
                 </Link>
-                <Link to="/clan" className={getLinkClass('/adventure')}>
+                <Link to="/clan" className={getLinkClass('/clan')}>
                   <FontAwesomeIcon icon={faShield} />
                   Clan
                 </Link>
-                <Link to="/shop" className={getLinkClass('/adventure')}>
+                <Link to="/shop" className={getLinkClass('/shop')}>
                   <FontAwesomeIcon icon={faShield} />
                   Tienda
                 </Link>
@@ -96,11 +96,11 @@ export const Navbar = () => {
             <FontAwesomeIcon icon={faScroll} />
             Aventuras
           </Link>
-          <Link to="/clan" className={getLinkClass('/adventure')}>
+          <Link to="/clan" className={getLinkClass('/clan')}>
             <FontAwesomeIcon icon={faShield} />
             Clan
           </Link>
-          <Link to="/shop" className={getLinkClass('/adventure')}>
+          <Link to="/shop" className={getLinkClass('/shop')}>
             <FontAwesomeIcon icon={faShield} />
             Tienda
           </Link>
