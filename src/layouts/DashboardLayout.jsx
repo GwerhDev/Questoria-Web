@@ -112,7 +112,6 @@ const DashboardLayout = ({ children }) => {
           </main>
         </div>
       </div >
-      <ExperienceBar />
     </div >
   );
 };
