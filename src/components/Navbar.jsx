@@ -85,6 +85,9 @@ export const Navbar = () => {
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <Link to="/play" className="mr-4 px-4 py-2 rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-300">
+              Jugar
+            </Link>
             {accountData && accountData.logged ? (
               <div className="relative" ref={userMenuRef}>
                 <button 

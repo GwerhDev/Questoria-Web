@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage';
 import AccountPage from './pages/AccountPage';
 import AdventurePage from './pages/AdventurePage';
 import AdventureDetailPage from './pages/AdventureDetailPage';
+import PlayPage from './pages/PlayPage';
 
 const AppContent = () => {
   return (
@@ -17,6 +18,7 @@ const AppContent = () => {
             <Route path="/u/account" element={<AccountPage />} />
             <Route path="/adventure" element={<AdventurePage />} />
             <Route path="/adventure/:adventureId" element={<AdventureDetailPage />} />
+            <Route path="/play" element={<PlayPage />} />
           </Routes>
         </DashboardLayout>
       } />
