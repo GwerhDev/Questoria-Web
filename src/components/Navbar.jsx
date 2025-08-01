@@ -113,17 +113,17 @@ export const Navbar = () => {
                         <p className="text-xs text-gray-400">{accountData.userData.role}</p>
                       </div>
                     </div>
-                    <Link to="/u/account" className="block px-4 py-2 text-sm text-text-primary hover:bg-gray-700 flex items-center space-x-2">
+                    <Link to="/u/account" className="px-4 py-2 text-sm text-text-primary hover:bg-gray-700 flex items-center space-x-2">
                       <FontAwesomeIcon icon={faUserCircle} />
                       <span>Ver perfil</span>
                     </Link>
                     {accountData.userData.role === 'admin' && (
-                      <a href="https://dashboard.questoria.cl" target="_blank" rel="noopener noreferrer" className="block px-4 py-2 text-sm text-text-primary hover:bg-gray-700 flex items-center space-x-2">
+                      <a href="https://dashboard.questoria.cl" target="_blank" rel="noopener noreferrer" className="px-4 py-2 text-sm text-text-primary hover:bg-gray-700 flex items-center space-x-2">
                         <FontAwesomeIcon icon={faUserShield} />
                         <span>Admin Dashboard</span>
                       </a>
                     )}
-                    <button onClick={handleLogout} className="block w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-gray-700 flex items-center space-x-2">
+                    <button onClick={handleLogout} className="w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-gray-700 flex items-center space-x-2">
                       <FontAwesomeIcon icon={faSignOutAlt} />
                       <span>Cerrar sesión</span>
                     </button>
