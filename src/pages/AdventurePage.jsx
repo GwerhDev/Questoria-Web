@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAdventures } from '../store/adventureSlice';
-import { Loader } from '../components/Loader';
+
 import { Link } from 'react-router-dom';
 
 const AdventurePage = () => {
@@ -13,7 +13,7 @@ const AdventurePage = () => {
   }, [dispatch]);
 
   if (status === 'loading') {
-    return <Loader />;
+    return <div className="text-text-primary">Cargando aventuras...</div>;
   }
 
   if (status === 'failed') {

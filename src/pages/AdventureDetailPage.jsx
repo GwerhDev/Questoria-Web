@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAdventureById } from '../store/adventureSlice';
-import { Loader } from '../components/Loader';
+
 
 const AdventureDetailPage = () => {
   const { adventureId } = useParams();
@@ -16,7 +16,7 @@ const AdventureDetailPage = () => {
   }, [adventureId, dispatch]);
 
   if (status === 'loading' || !adventure) {
-    return <Loader />;
+    return <div className="text-text-primary">Cargando aventura...</div>;
   }
 
   if (status === 'failed') {
