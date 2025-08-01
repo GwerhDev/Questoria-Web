@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faBars, faTimes, faScroll, faHome, faShield } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faBars, faTimes, faHome, faNewspaper, faBagShopping } from '@fortawesome/free-solid-svg-icons';
 import { logoutUser } from '../store/accountSlice';
 
 export const Navbar = () => {
@@ -69,29 +69,25 @@ export const Navbar = () => {
                   <FontAwesomeIcon icon={faHome} />
                   Inicio
                 </Link>
-                <Link to="/adventure" className={getLinkClass('/adventure')}>
-                  <FontAwesomeIcon icon={faScroll} />
-                  Aventuras
-                </Link>
-                <Link to="/clan" className={getLinkClass('/clan')}>
-                  <FontAwesomeIcon icon={faShield} />
-                  Clan
+                <Link to="/news" className={getLinkClass('/news')}>
+                  <FontAwesomeIcon icon={faNewspaper} />
+                  Noticias
                 </Link>
                 <Link to="/shop" className={getLinkClass('/shop')}>
-                  <FontAwesomeIcon icon={faShield} />
+                  <FontAwesomeIcon icon={faBagShopping} />
                   Tienda
                 </Link>
               </div>
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <Link to="/play" className="mr-4 px-4 py-2 rounded-md text-white bg-yellow-600 hover:bg-yellow-700 transition-colors duration-300">
+            <Link to="/play" className="mr-4 px-4 py-1 flex justify-center items-center rounded-md text-white bg-yellow-600 hover:bg-yellow-700 transition-colors duration-300">
               Jugar
             </Link>
             {accountData && accountData.logged ? (
               <div className="relative" ref={userMenuRef}>
-                <button 
-                  onClick={handleUserMenuToggle} 
+                <button
+                  onClick={handleUserMenuToggle}
                   className="flex items-center space-x-2 p-2 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors duration-300 focus:outline-none">
                   {accountData.userData.profilePic ? (
                     <img src={accountData.userData.profilePic} alt="Profile" className="w-8 h-8 rounded-full" />
@@ -121,16 +117,12 @@ export const Navbar = () => {
             <FontAwesomeIcon icon={faHome} />
             Inicio
           </Link>
-          <Link to="/adventure" className={getLinkClass('/adventure')}>
-            <FontAwesomeIcon icon={faScroll} />
-            Aventuras
-          </Link>
-          <Link to="/clan" className={getLinkClass('/clan')}>
-            <FontAwesomeIcon icon={faShield} />
-            Clan
+          <Link to="/news" className={getLinkClass('/news')}>
+            <FontAwesomeIcon icon={faNewspaper} />
+            Noticias
           </Link>
           <Link to="/shop" className={getLinkClass('/shop')}>
-            <FontAwesomeIcon icon={faShield} />
+            <FontAwesomeIcon icon={faBagShopping} />
             Tienda
           </Link>
         </div>
