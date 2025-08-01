@@ -7,6 +7,7 @@ import { logoutUser } from '../store/accountSlice';
 
 export const Navbar = () => {
   const accountData = useSelector((state) => state.account.data);
+  const accountStatus = useSelector((state) => state.account.status);
   const dispatch = useDispatch();
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -84,7 +85,11 @@ export const Navbar = () => {
             <Link to="/play" className="mr-4 px-4 py-1 flex justify-center items-center rounded-md text-white bg-yellow-600 hover:bg-yellow-700 transition-colors duration-300">
               Jugar
             </Link>
-            {accountData && accountData.logged ? (
+            {accountStatus === 'loading' ? (
+              <div className="p-2">
+                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-gray-400"></div>
+              </div>
+            ) : accountData && accountData.logged ? (
               <div className="relative" ref={userMenuRef}>
                 <button
                   onClick={handleUserMenuToggle}
