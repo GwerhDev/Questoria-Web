@@ -31,7 +31,7 @@ const AdventureDetailPage = () => {
       {adventure.quests && adventure.quests.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {adventure.quests.map((quest) => (
-            <div key={quest._id} className="bg-surface p-4 rounded-lg shadow-md">
+            <div key={quest.id} className="bg-surface p-4 rounded-lg shadow-md">
               <h3 className="text-xl font-semibold text-text-primary">{quest.title}</h3>
               <p className="text-text-secondary mt-2">{quest.description}</p>
               {quest.reward && <p className="text-sm text-text-tertiary mt-2">Reward: {quest.reward}</p>}

@@ -25,7 +25,7 @@ const AdventurePage = () => {
       <h1 className="text-2xl font-bold mb-4">Aventuras</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
         {adventures?.map((adventure) => (
-          <Link to={`/adventure/${adventure._id}`} key={adventure._id} className="bg-surface p-4 rounded-lg shadow-md cursor-pointer hover:bg-gray-700 transition-colors duration-200">
+          <Link to={`/adventure/${adventure.id}`} key={adventure.id} className="bg-surface p-4 rounded-lg shadow-md cursor-pointer hover:bg-gray-700 transition-colors duration-200">
             <h2 className="text-xl font-semibold text-text-primary">{adventure.name}</h2>
             <p className="text-text-secondary mt-2">{adventure.description}</p>
             <p className="text-sm text-text-tertiary mt-2">Quests: {adventure.quests?.length}</p>

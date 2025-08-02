@@ -49,8 +49,8 @@ export const UserButton = () => {
           <button
             onClick={handleUserMenuToggle}
             className="flex items-center space-x-2 p-2 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors duration-300 focus:outline-none">
-            {accountData.userData.profilePic ? (
-              <img src={accountData.userData.profilePic} alt="Profile" className="w-8 h-8 rounded-full" />
+            {accountData.userData.profile_pic ? (
+              <img src={accountData.userData.profile_pic} alt="Profile" className="w-8 h-8 rounded-full" />
             ) : (
               <div className="w-8 h-8 rounded-full bg-gray-500 flex items-center justify-center text-white text-sm">{accountData.userData.username.charAt(0).toUpperCase()}</div>
             )}
@@ -58,8 +58,8 @@ export const UserButton = () => {
           {isUserMenuOpen && (
             <div className="absolute right-0 mt-2 w-48 bg-surface rounded-md shadow-lg py-1 z-20">
               <div className="px-4 py-2 flex items-center space-x-3 border-b border-gray-700">
-                {accountData.userData.profilePic ? (
-                  <img src={accountData.userData.profilePic} alt="Profile" className="w-10 h-10 rounded-full" />
+                {accountData.userData.profile_pic ? (
+                  <img src={accountData.userData.profile_pic} alt="Profile" className="w-10 h-10 rounded-full" />
                 ) : (
                   <div className="w-10 h-10 rounded-full bg-gray-500 flex items-center justify-center text-white text-lg">{accountData.userData.username.charAt(0).toUpperCase()}</div>
                 )}
